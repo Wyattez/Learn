@@ -115,3 +115,112 @@ docker run -d -p 8080:80 --name my-nginx nginx
 
 თქვენი სურათი ახლა Docker Hub-ზეა. ნებისმიერს შეუძლია მისი ამოღება და გაშვება:
 `docker run -p 3000:3000 wyattez/getting-started`
+
+
+
+# 🐳 Docker – მოკლე დოკუმენტაცია (Containers & Images)
+
+## 📌 1. Container-ის ნახვა
+
+### მხოლოდ გაშვებულები:
+
+```
+docker ps
+```
+
+### ყველა (running + stopped):
+
+```
+docker ps -a
+```
+
+---
+
+## 📌 2. Container-ის გაჩერება
+
+```
+docker stop <container_name_or_id>
+```
+
+მაგ:
+
+```
+docker stop nginx-1
+```
+
+---
+
+## 📌 3. Container-ის წაშლა
+
+```
+docker rm <container_id_or_name>
+```
+
+### ყველა container-ის წაშლა:
+
+```
+docker rm -f $(docker ps -aq)
+```
+
+---
+
+## 📌 4. Image-ის ნახვა
+
+```
+docker images
+```
+
+---
+
+## 📌 5. Image-ის pull (ჩამოტვირთვა)
+
+```
+docker pull nginx:1.14-alpine
+```
+
+👉 მხოლოდ ჩამოტვირთავს, container არ იქმნება
+
+---
+
+## 📌 6. Image-ის წაშლა
+
+```
+docker rmi <image_name>
+```
+
+### ყველა image-ის წაშლა:
+
+```
+docker rmi -f $(docker images -q)
+```
+
+---
+
+## 📌 7. Container-ის და Image-ის განსხვავება
+
+- **Image** → template (შაბლონი)
+- **Container** → გაშვებული instance (რეალური პროცესი)
+
+---
+
+## 📌 8. Cleanup (სრული გასუფთავება)
+
+```
+docker rm -f $(docker ps -aq)docker rmi -f $(docker images -q)
+```
+
+---
+
+## 📌 9. მდგომარეობები (States)
+
+- **Running** → მუშაობს
+- **Exited** → გაჩერებულია
+- **Created** → შექმნილია, მაგრამ არ არის გაშვებული
+
+---
+
+## 📌 10. გადამოწმება
+
+```
+docker ps -adocker images
+```
